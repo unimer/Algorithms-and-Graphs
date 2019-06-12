@@ -61,16 +61,46 @@ void in_order(struct node *nd){
     }
 }
 
-void as_is(struct node *nd){
+void search(struct node *nd, int value){
+    if(node){
+        if(node->value == value){
+            printf("True");
+            return;
+        }
+        else{
+            if(node->value > value){
+                if(node->left){
+                    if(node->left == value){
+                        printf("True");
+                        return;
+                    }
+                    else{
+                        search(node->left, value);
+                    }
+                }
+            }
+            if(node->value > value){
+                if(node->left){
+                    if(node->left == value){
+                        printf("True");
+                        return;
+                    }
+                    else{
+                        search(node->left, value);
+                    }
+                }
+            }
 
 
+        }
+    }
 }
 
 void main(){
     struct node *root = NULL;
     int test_numbers[10] = {54,10,25,91,85,40,42,50,58,78};
-    
-    for(int i=0; i<10; i++){   
+
+    for(int i=0; i<10; i++){
         if(!root){
             init_tree(&root, test_numbers[i]);
         }
@@ -81,5 +111,9 @@ void main(){
 
     printf("------------------In Order Traversal-------------------\n");
     in_order(root);
-    
+    printf("------------------AS IS-------------------------------\n");
+    printf("Has to be implemented\n");
+    printf("--- Search-(58)------\n");
+
+    search(root, 58);
 }
